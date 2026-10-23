@@ -11,9 +11,7 @@ const APP_SHELL = [
 ];
 
 
-/*
- * INSTALL
- */
+
 
 self.addEventListener("install", (event) => {
 
@@ -33,9 +31,7 @@ self.addEventListener("install", (event) => {
 });
 
 
-/*
- * ACTIVATE
- */
+
 
 self.addEventListener("activate", (event) => {
 
@@ -65,30 +61,20 @@ self.addEventListener("activate", (event) => {
 });
 
 
-/*
- * FETCH
- *
- * We only cache the launcher itself.
- * Google Sites is NOT cached.
- */
+
 
 self.addEventListener("fetch", (event) => {
 
   const request = event.request;
 
-  /*
-   * Only handle normal GET requests.
-   */
+
 
   if (request.method !== "GET") {
     return;
   }
 
 
-  /*
-   * Let external sites, including Google Sites,
-   * go directly to the network.
-   */
+
 
   const url = new URL(request.url);
 
@@ -97,10 +83,6 @@ self.addEventListener("fetch", (event) => {
   }
 
 
-  /*
-   * For the launcher itself:
-   * try the network first so updates are picked up.
-   */
 
   event.respondWith(
 
